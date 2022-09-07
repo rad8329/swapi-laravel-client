@@ -9,4 +9,3 @@ cd "${ROOT}"
 
 ./vendor/bin/php-cs-fixer fix ./app --config=.php-cs-fixer.dist.php --allow-risky=yes
 ./vendor/bin/php-cs-fixer fix ./tests --config=.php-cs-fixer.dist.php --allow-risky=yes
-./vendor/bin/php-cs-fixer fix ./src --config=.php-cs-fixer.dist.php --allow-risky=yes
