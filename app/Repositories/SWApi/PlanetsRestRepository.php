@@ -6,26 +6,10 @@ namespace App\Repositories\SWApi;
 
 use App\DTOs\SWApi\Planet;
 use App\DTOs\SWApi\ResultSet;
-use App\Repositories\RestRepository;
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Http;
 use JsonException;
 
 class PlanetsRestRepository extends RestRepository implements PlanetsRepository
 {
-    private string $url;
-    private PendingRequest  $request;
-
-    public function __construct(Http $client, Cache $cache, Date $date)
-    {
-        $this->url = config('swapi.url');
-        $this->request = $client::timeout(config('swapi.timeout'));
-
-        parent::__construct($client, $cache, $date);
-    }
-
     /**
      * @param array<string, mixed> $query
      *

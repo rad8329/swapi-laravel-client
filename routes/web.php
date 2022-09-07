@@ -3,6 +3,7 @@
 use App\Http\Livewire\SWApi\PlanetList;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SWApi\PlanetResidentsList;
+use App\Http\Livewire\SWApi\PersonView;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Livewire\SWApi\PlanetResidentsList;
 
 Route::get('/', PlanetList::class);
 Route::get('/planet/{id}', PlanetResidentsList::class)->where('id', '[0-9]+');
+Route::get('/people/{id}', PersonView::class)->where('id', '[0-9]+');
 

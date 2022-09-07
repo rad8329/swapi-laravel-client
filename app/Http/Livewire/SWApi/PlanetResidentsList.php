@@ -4,19 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Livewire\SWApi;
 
-use App\Repositories\SWApi\PlanetsRestRepository;
+use App\Repositories\SWApi\PlanetsRepository;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use JsonException;
 use Livewire\Component;
 
 class PlanetResidentsList extends Component
 {
-    private PlanetsRestRepository $repository;
+    private PlanetsRepository $repository;
 
-    /**
-     * @throws JsonException when the query was not able to be serialized
-     */
     public function render(Request $request): View
     {
         return view('livewire.SWApi.planet-resident-list', [
@@ -24,7 +20,7 @@ class PlanetResidentsList extends Component
         ]);
     }
 
-    public function boot(PlanetsRestRepository $repository): void
+    public function boot(PlanetsRepository $repository): void
     {
         $this->repository = $repository;
     }
