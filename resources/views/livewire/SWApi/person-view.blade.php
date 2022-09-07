@@ -37,6 +37,7 @@
                 </div>
             </div>
             @if(!$person->films->isEmpty())
+                <h6 class="text-xl font-semibold leading-none text-gray-900 dark:text-white py-3 sm:py-4">Films</h6>
                 <div class="flow-root">
                     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                         @foreach($person->films as $film => $url)
@@ -54,7 +55,7 @@
                 </div>
             @else
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-                    <p>It seems your query terms are wrong, or that person is not there.</p>
+                    <p>This person has no films.</p>
                 </div>
             @endif
         </div>

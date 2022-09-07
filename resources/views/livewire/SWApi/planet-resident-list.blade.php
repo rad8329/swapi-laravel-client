@@ -21,10 +21,10 @@
                                         </p>
                                     </div>
                                     <div
-                                        class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                        class="inline-flex items-center text-base text-gray-900 dark:text-white">
                                         <a href="{{ url('/people/'.\App\Helpers\SWApi\Helper::extractPeopleIdFromUrl($url)) }}"
-                                           class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-                                            See it
+                                           class="text-sm text-blue-600 hover:underline dark:text-blue-500">
+                                            View
                                         </a>
                                     </div>
                                 </div>

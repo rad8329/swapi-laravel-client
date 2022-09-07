@@ -24,10 +24,10 @@
                                         </p>
                                     </div>
                                     <div
-                                        class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                        class="inline-flex items-center text-base text-gray-900 dark:text-white">
                                         <a href="{{ url("/planet/{$planet->id}") }}"
-                                           class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-                                            {{ $planet->population }}
+                                           class="text-sm font-thin text-blue-600 hover:underline dark:text-blue-500">
+                                            View
                                         </a>
                                     </div>
                                 </div>
