@@ -7,6 +7,7 @@ namespace App\Http\Livewire\SWApi;
 use App\Pagination\SWApi\Paginator;
 use App\Repositories\SWApi\PlanetsRestRepository;
 use Illuminate\View\View;
+use JsonException;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,6 +18,9 @@ class PlanetList extends Component
 
     private PlanetsRestRepository $repository;
 
+    /**
+     * @throws JsonException when the query was not able to be serialized
+     */
     public function render(): View
     {
         $request = ['page' => Paginator::resolveCurrentPage(), 'search' => $this->term];

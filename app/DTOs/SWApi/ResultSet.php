@@ -6,7 +6,7 @@ namespace App\DTOs\SWApi;
 
 use Illuminate\Support\Collection;
 
-class Response
+class ResultSet
 {
     /**
      * @param Collection<int, Planet> $result

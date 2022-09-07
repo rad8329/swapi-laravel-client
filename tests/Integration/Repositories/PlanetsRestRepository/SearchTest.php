@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Repositories;
+namespace Tests\Integration\Repositories\PlanetsRestRepository;
 
 use App\DTOs\SWApi\Planet;
 use App\Repositories\Cacheable;
@@ -12,10 +12,17 @@ use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 /**
- * @covers \PlanetsRestRepository::search
+ * @covers \App\Repositories\SWApi\PlanetsRestRepository::search
  */
-class PlanetsRestRepositoryTest extends TestCase
+class SearchTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Cache::flush();
+    }
+
     /**
      * Test that SUT class is being bound by the service container.
      */
@@ -31,6 +38,7 @@ class PlanetsRestRepositoryTest extends TestCase
      */
     public function testItIsSearchingWithoutTerms(): void
     {
+        /** @var PlanetsRestRepository $repository */
         $repository = app(PlanetsRepository::class);
 
         $result = $repository->search();
@@ -51,6 +59,7 @@ class PlanetsRestRepositoryTest extends TestCase
      */
     public function testItIsSearchingWithTerms(): void
     {
+        /** @var PlanetsRestRepository $repository */
         $repository = app(PlanetsRepository::class);
 
         $result = $repository->search(['search' => 'no']);
@@ -69,6 +78,8 @@ class PlanetsRestRepositoryTest extends TestCase
 
     /**
      * Test that SUT is caching as expected.
+     *
+     * @noinspection PhpUnhandledExceptionInspection
      */
     public function testItIsUsingCache(): void
     {
@@ -84,15 +95,23 @@ class PlanetsRestRepositoryTest extends TestCase
         $request = ['search' => 'no'];
         $queryHash = $cacheable->makeHash($request);
 
+        /** @var PlanetsRestRepository $repository */
         $repository = app(PlanetsRepository::class);
 
         $result = $repository->search($request);
 
         $this->assertTrue(Cache::has($queryHash));
-        $this->assertSame(Cache::get($queryHash), $result);
+
+        $this->assertSame(
+            json_encode(Cache::get($queryHash), JSON_THROW_ON_ERROR),
+            json_encode($result, JSON_THROW_ON_ERROR)
+        );
 
         $secondResult = $repository->search(['search' => 'ha']);
 
-        $this->assertNotSame(Cache::get($queryHash), $secondResult);
+        $this->assertNotSame(
+            json_encode(Cache::get($queryHash), JSON_THROW_ON_ERROR),
+            json_encode($secondResult, JSON_THROW_ON_ERROR)
+        );
     }
 }

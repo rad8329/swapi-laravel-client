@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\SWApi\PlanetList;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\SWApi\PlanetResidentsList;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', PlanetList::class);
+Route::get('/planet/{id}', PlanetResidentsList::class)->where('id', '[0-9]+');
 
