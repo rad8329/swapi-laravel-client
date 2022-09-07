@@ -9,6 +9,33 @@
                        onclick="history.back()">Back</a>
                 </div>
             </div>
+            <div
+                class="space-y-3 sm:space-y-2 font-open-sans text-sm lg:text-xs xl:text-sm mb-7 sm:mb-0 leading-tight overflow-hidden">
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Height</span></div>
+                    <div class="text-gray-600">{{ $person->height }}</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Mass</span></div>
+                    <div class="text-gray-600">{{ $person->mass }}</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Gender</span></div>
+                    <div class="text-gray-600">{{ $person->gender }}</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Eye color</span></div>
+                    <div class="text-gray-600">{{ $person->eyeColor }}</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Skin color</span></div>
+                    <div class="text-gray-600">{{ $person->skinColor }}</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-3 w-15"><span class="">Birth year</span></div>
+                    <div class="text-gray-600">{{ $person->birthYear }}</div>
+                </div>
+            </div>
             @if(!$person->films->isEmpty())
                 <div class="flow-root">
                     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
