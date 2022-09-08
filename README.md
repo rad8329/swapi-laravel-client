@@ -20,7 +20,13 @@ This is a basic Laravel app to practice a common synchronous integration using R
 
 ### Setup
 
-Placed into the project folder run the command $ `docker-compose up -d`
+#### Using local environment
+
+Placed into the project folder run the command $ `composer install`
+
+#### Using Docker
+
+Placed into the project folder run the command $ `docker-compose up -d && composer install`
 
 *Note: You could change the application port by changing the environment variable `APP_PORT`*
 
