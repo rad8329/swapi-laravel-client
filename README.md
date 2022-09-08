@@ -14,7 +14,9 @@ This is a basic Laravel app to practice a common synchronous integration using R
 
 ### Requirements
 
-- Docker
+- PHP 8.1
+
+*Note: Just in case you dont want to have another PHP version on your dev environment, please consider to use* Docker *, see the* [Tooling](#tooling) *section*
 
 ### Setup
 
@@ -24,7 +26,7 @@ Placed into the project folder run the command $ `docker-compose up -d`
 
 ### How to use it
 
-Go to the url [http://localhost:8080](http://localhost:8080)
+If you're using Docker, just go to the url [http://localhost:8080](http://localhost:8080)
 
 ### Tooling
 
@@ -36,6 +38,6 @@ There are some docker wrappers within the folder `bin`, they are:
 
 ### Nice to have
 
-- Synchronous integration using SOAP, a nice one would be to display in words the person `height` and `mass`
+- Synchronous integration using SOAP, a nice one would be to display in words the person `height` and `mass` using https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL
 - Feature test cases to ensure the proper working from the user perspective
 - Implementation of circuit breaker pattern to properly deal with third party downtimes

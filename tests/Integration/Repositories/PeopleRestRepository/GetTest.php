@@ -12,7 +12,7 @@ use JsonException;
 use Tests\TestCase;
 
 /**
- * @covers \App\Repositories\SWApi\PlanetsRestRepository::get
+ * @covers \App\Repositories\SWApi\PeopleRestRepository::get
  */
 class GetTest extends TestCase
 {
