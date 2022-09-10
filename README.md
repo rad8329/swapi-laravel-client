@@ -2,7 +2,7 @@
 
 ## About this project
 
-This is a basic Laravel app to practice a common synchronous integration using REST 
+This is a basic Laravel app to practice a common synchronous communication using REST 
 
 ### Related
 
@@ -44,6 +44,6 @@ There are some docker wrappers within the folder `bin`, they are:
 
 ### Nice to have
 
-- Synchronous integration using SOAP, a nice one would be to display in words the person `height` and `mass` using https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL
+- Synchronous communication using SOAP, a nice one would be to display in words the person `height` and `mass` using https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL
 - Feature test cases to ensure the proper working from the user perspective
 - Implementation of circuit breaker pattern to properly deal with third party downtimes
