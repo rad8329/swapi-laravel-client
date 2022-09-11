@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Repositories\SWApi\PeopleRepository;
-use App\Repositories\SWApi\PeopleRestRepository;
-use App\Repositories\SWApi\PlanetsRepository;
-use App\Repositories\SWApi\PlanetsRestRepository;
+use App\Services\SWApi\PeopleService;
+use App\Services\SWApi\PeopleServiceInterface;
+use App\Services\SWApi\PlanetsService;
+use App\Services\SWApi\PlanetsServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class SWApiServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(PlanetsRepository::class, PlanetsRestRepository::class);
-        $this->app->bind(PeopleRepository::class, PeopleRestRepository::class);
+        $this->app->bind(PlanetsServiceInterface::class, PlanetsService::class);
+        $this->app->bind(PeopleServiceInterface::class, PeopleService::class);
     }
 }

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Tests\Integration\Repositories\PlanetsRestRepository;
 
 use App\DTOs\SWApi\Planet;
-use App\Repositories\Cacheable;
-use App\Repositories\SWApi\PlanetsRepository;
-use App\Repositories\SWApi\PlanetsRestRepository;
+use App\Services\SWApi\PlanetsService;
+use App\Services\Cache\CacheWithOptionsResolver;
+use App\Services\SWApi\PlanetsServiceInterface;
 use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 /**
- * @covers \App\Repositories\SWApi\PlanetsRestRepository::search
+ * @covers \App\Services\SWApi\PlanetsService::search
  */
 class SearchTest extends TestCase
 {
@@ -26,20 +26,20 @@ class SearchTest extends TestCase
     /**
      * Test that SUT class is being bound by the service container.
      */
-    public function testItIsProperlyBound(): void
+    public function test_it_is_properly_bound(): void
     {
-        $repository = app(PlanetsRepository::class);
+        $repository = app(PlanetsServiceInterface::class);
 
-        $this->assertInstanceOf(PlanetsRestRepository::class, $repository);
+        $this->assertInstanceOf(PlanetsService::class, $repository);
     }
 
     /**
      * Test that SUT is working as expected when a search term is not provided.
      */
-    public function testItIsSearchingWithoutTerms(): void
+    public function test_it_is_searching_without_terms(): void
     {
-        /** @var PlanetsRestRepository $repository */
-        $repository = app(PlanetsRepository::class);
+        /** @var PlanetsServiceInterface $repository */
+        $repository = app(PlanetsServiceInterface::class);
 
         $result = $repository->search();
 
@@ -57,10 +57,10 @@ class SearchTest extends TestCase
     /**
      * Test that SUT is working as expected when a search term is provided.
      */
-    public function testItIsSearchingWithTerms(): void
+    public function test_it_is_searching_with_terms(): void
     {
-        /** @var PlanetsRestRepository $repository */
-        $repository = app(PlanetsRepository::class);
+        /** @var PlanetsServiceInterface $repository */
+        $repository = app(PlanetsServiceInterface::class);
 
         $result = $repository->search(['search' => 'no']);
 
@@ -81,22 +81,15 @@ class SearchTest extends TestCase
      *
      * @noinspection PhpUnhandledExceptionInspection
      */
-    public function testItIsUsingCache(): void
+    public function test_it_is_using_cache(): void
     {
-        $cacheable = new class() {
-            use Cacheable;
-
-            public function makeHash(array $values)
-            {
-                return $this->hash($values);
-            }
-        };
+        $cacheResolver = app(CacheWithOptionsResolver::class);
 
         $request = ['search' => 'no'];
-        $queryHash = $cacheable->makeHash($request);
+        $queryHash = $cacheResolver->resolve(PlanetsService::class . '::search', $request);
 
-        /** @var PlanetsRestRepository $repository */
-        $repository = app(PlanetsRepository::class);
+        /** @var PlanetsServiceInterface $repository */
+        $repository = app(PlanetsServiceInterface::class);
 
         $result = $repository->search($request);
 
