@@ -1,4 +1,6 @@
-@if(!empty($person->name))
+@extends('layouts.default')
+@section('content')
+@if(!is_null($person))
     <div class="flex justify-center">
         <div
             class="p-4 w-full max-w-4xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -65,3 +67,4 @@
         <p>It seems your query terms are wrong, or that person is not there.</p>
     </div>
 @endif
+@endsection

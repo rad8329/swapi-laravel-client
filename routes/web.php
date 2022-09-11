@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Livewire\SWApi\PlanetList;
+use App\Repositories\SWApi\PeopleRestRepository;
+use App\Repositories\SWApi\PlanetsRepository;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\SWApi\PlanetResidentsList;
-use App\Http\Livewire\SWApi\PersonView;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,12 @@ use App\Http\Livewire\SWApi\PersonView;
 */
 
 Route::get('/', PlanetList::class);
-Route::get('/planet/{id}', PlanetResidentsList::class)->where('id', '[0-9]+');
-Route::get('/people/{id}', PersonView::class)->where('id', '[0-9]+');
+
+Route::get('/planet/{id}', static function (int $id, PlanetsRepository $repository) {
+    return view('SWApi.planet-resident-list', ['planet' => $repository->get($id)]);
+})->where('id', '[0-9]+');
+
+Route::get('/people/{id}', static function (int $id, PeopleRestRepository $repository) {
+    return view('SWApi.person-view', ['person' => $repository->get($id)]);
+})->where('id', '[0-9]+');
 
