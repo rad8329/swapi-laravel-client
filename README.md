@@ -44,7 +44,7 @@ There are some docker wrappers within the folder `bin`, they are:
 
 ### Nice to have
 
-- Synchronous communication using SOAP, a nice one would be to display the person `height` and `mass` in words, using https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL
+- Synchronous communication using SOAP, a nice one would be to display the person `height` and `mass` in words using https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL
 - Feature test cases to ensure the proper working from the user perspective
 - Implementation of circuit breaker pattern to properly deal with third party downtimes
 - Improve the caching strategy, the current one is such optimistic
