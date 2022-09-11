@@ -1,6 +1,8 @@
 <?php
 
-namespace Tests\Integration\Services\Hashing\ByJsonEncodedHasher;
+declare(strict_types=1);
+
+namespace Tests\Integration\Services\Cache\ByMergingParametersResolver;
 
 use App\Services\Cache\CacheWithOptionsResolver;
 use Illuminate\Foundation\Testing\WithFaker;

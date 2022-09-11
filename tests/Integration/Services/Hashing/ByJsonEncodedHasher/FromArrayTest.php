@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Integration\Services\Hashing\ByJsonEncodedHasher;
 
 use App\Services\Hashing\ByJsonEncodedHasher;
