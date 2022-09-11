@@ -22,6 +22,6 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
-        <env name="SWAPI_TIMEOUT_IN_SECONDS" value="12"/>
+        <env name="SWAPI_TIMEOUT_IN_SECONDS" value="18"/>
     </php>
 </phpunit>
