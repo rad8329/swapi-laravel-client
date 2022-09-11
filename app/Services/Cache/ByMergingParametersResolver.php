@@ -8,7 +8,7 @@ use App\Services\Hashing\Hasher;
 
 class ByMergingParametersResolver implements CacheWithOptionsResolver
 {
-    public function __construct(private readonly Hasher $hasher)
+    public function __construct(protected readonly Hasher $hasher)
     {
     }
 

@@ -7,6 +7,9 @@ use App\Services\Hashing\Hasher;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+/**
+ * @covers \App\Services\Hashing\ByJsonEncodedHasher::fromArray
+ */
 class FromArrayTest extends TestCase
 {
     use WithFaker;
