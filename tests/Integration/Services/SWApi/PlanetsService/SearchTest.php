@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Repositories\PlanetsRestRepository;
+namespace Tests\Integration\Services\SWApi\PlanetsService;
 
 use App\DTOs\SWApi\Planet;
 use App\Services\SWApi\PlanetsService;

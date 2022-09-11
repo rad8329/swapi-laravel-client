@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Repositories\PeopleRestRepository;
+namespace Tests\Integration\Services\SWApi\PeopleService;
 
 use App\Services\Cache\CacheWithOptionsResolver;
 use App\Services\SWApi\PeopleService;
