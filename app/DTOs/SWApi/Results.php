@@ -7,7 +7,10 @@ namespace App\DTOs\SWApi;
 use Illuminate\Support\Collection;
 
 /**
- * @template T a SWApi resource type
+ * @template TKey of array-key
+ * @template TResource
+ *
+ * @extends Collection<TKey, TResource>
  */
 class Results extends Collection
 {

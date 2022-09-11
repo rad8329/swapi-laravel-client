@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\DTOs\SWApi;
 
 /**
- * @template T
+ * @template TKey of array-key
+ * @template TResource
  */
 class Response
 {
     /**
-     * @param Results<T> $result a SWApi resource collection
+     * @param Results<TKey, TResource> $results a SWApi resource collection
      */
-    public function __construct(readonly Results $result, readonly int $count)
+    public function __construct(readonly Results $results, readonly int $count)
     {
     }
 }

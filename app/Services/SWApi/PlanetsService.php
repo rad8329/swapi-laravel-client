@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace App\Services\SWApi;
 
 use App\DTOs\SWApi\Planet;
+use App\DTOs\SWApi\PlanetResults;
 use App\DTOs\SWApi\Response;
-use App\DTOs\SWApi\Results;
 
+/**
+ * @template TKey of array-key
+ *
+ * @implements PlanetsServiceInterface<TKey>
+ */
 class PlanetsService extends RestService implements PlanetsServiceInterface
 {
     /**
      * @param array<string, mixed> $query
      *
-     * @return Response<Planet>
+     * @return Response<TKey, Planet>
      */
     public function search(array $query = []): Response
     {
@@ -29,8 +34,7 @@ class PlanetsService extends RestService implements PlanetsServiceInterface
         return $this->remember($cacheKeyName, function () use ($query): Response {
             $clientResponse = $this->client::get('planets', $query);
 
-            $results = Results::make($clientResponse->json('results'))
-                ->map(fn (array $rawValue) => Planet::fromRawArray($rawValue));
+            $results = PlanetResults::fromRawArray($clientResponse->json('results'));
 
             return new Response($results, (int) $clientResponse->json('count'));
         });

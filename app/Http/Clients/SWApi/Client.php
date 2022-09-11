@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Http;
 
 class Client extends Http
 {
+    /**
+     * @param array<int|string, mixed>|string|null $query
+     */
     public static function get(string $url, array|string|null $query = null): Response
     {
         return static::timeout(config('swapi.timeout'))->get(config('swapi.url') . $url, $query);

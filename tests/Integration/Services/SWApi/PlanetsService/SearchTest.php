@@ -44,9 +44,9 @@ class SearchTest extends TestCase
         $result = $repository->search();
 
         $this->assertEquals(60, $result->count);
-        $this->assertCount(10, $result->result);
+        $this->assertCount(10, $result->results);
 
-        $firstPlanet = $result->result->first();
+        $firstPlanet = $result->results->first();
 
         $this->assertInstanceOf(Planet::class, $firstPlanet);
         $this->assertSame('Tatooine', $firstPlanet->name);
@@ -65,9 +65,9 @@ class SearchTest extends TestCase
         $result = $repository->search(['search' => 'no']);
 
         $this->assertEquals(5, $result->count);
-        $this->assertCount(5, $result->result);
+        $this->assertCount(5, $result->results);
 
-        $firstPlanet = $result->result->first();
+        $firstPlanet = $result->results->first();
 
         $this->assertInstanceOf(Planet::class, $firstPlanet);
         $this->assertSame('Kamino', $firstPlanet->name);
