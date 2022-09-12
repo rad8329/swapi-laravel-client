@@ -46,12 +46,17 @@ class SearchTest extends TestCase
         $this->assertEquals(60, $result->count);
         $this->assertCount(10, $result->results);
 
+        /** @var Planet $firstPlanet */
         $firstPlanet = $result->results->first();
 
+        $expectedName = 'Tatooine';
+        $expectedPopulation = 200000;
+        $expectedNumberOfResidents = 10;
+
         $this->assertInstanceOf(Planet::class, $firstPlanet);
-        $this->assertSame('Tatooine', $firstPlanet->name);
-        $this->assertSame(200000, $firstPlanet->population);
-        $this->assertCount(10, $firstPlanet->residents);
+        $this->assertSame($expectedName, $firstPlanet->name);
+        $this->assertSame($expectedPopulation, $firstPlanet->population);
+        $this->assertCount($expectedNumberOfResidents, $firstPlanet->residents);
     }
 
     /**
@@ -67,13 +72,17 @@ class SearchTest extends TestCase
         $this->assertEquals(5, $result->count);
         $this->assertCount(5, $result->results);
 
+        /** @var Planet $firstPlanet */
         $firstPlanet = $result->results->first();
 
-        $this->assertInstanceOf(Planet::class, $firstPlanet);
-        $this->assertSame('Kamino', $firstPlanet->name);
-        $this->assertSame(1000000000, $firstPlanet->population);
+        $expectedName = 'Kamino';
+        $expectedPopulation = 1000000000;
+        $expectedNumberOfResidents = 3;
 
-        $this->assertCount(3, $firstPlanet->residents);
+        $this->assertInstanceOf(Planet::class, $firstPlanet);
+        $this->assertSame($expectedName, $firstPlanet->name);
+        $this->assertSame($expectedPopulation, $firstPlanet->population);
+        $this->assertCount($expectedNumberOfResidents, $firstPlanet->residents);
     }
 
     /**
@@ -95,16 +104,12 @@ class SearchTest extends TestCase
 
         $this->assertTrue(Cache::has($queryHash));
 
-        $this->assertSame(
-            json_encode(Cache::get($queryHash), JSON_THROW_ON_ERROR),
-            json_encode($result, JSON_THROW_ON_ERROR)
-        );
+        $expectedPlanetAsJson = json_encode(Cache::get($queryHash), JSON_THROW_ON_ERROR);
+
+        $this->assertSame($expectedPlanetAsJson, json_encode($result, JSON_THROW_ON_ERROR));
 
         $secondResult = $repository->search(['search' => 'ha']);
 
-        $this->assertNotSame(
-            json_encode(Cache::get($queryHash), JSON_THROW_ON_ERROR),
-            json_encode($secondResult, JSON_THROW_ON_ERROR)
-        );
+        $this->assertNotSame($expectedPlanetAsJson, json_encode($secondResult, JSON_THROW_ON_ERROR));
     }
 }

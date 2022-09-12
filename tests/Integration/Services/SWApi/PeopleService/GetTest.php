@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Services\SWApi\PeopleService;
 
+use App\DTOs\SWApi\Person;
 use App\Services\Cache\CacheWithOptionsResolver;
 use App\Services\SWApi\PeopleService;
 use App\Services\SWApi\PeopleServiceInterface;
@@ -45,6 +46,8 @@ class GetTest extends TestCase
 
         /** @var PeopleServiceInterface $repository */
         $repository = app(PeopleServiceInterface::class);
+
+        /** @var Person $person */
         $person = $repository->getById($personId);
 
         $expectedName = 'Luke Skywalker';

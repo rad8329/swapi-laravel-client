@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Services\SWApi\PlanetsService;
 
+use App\DTOs\SWApi\Planet;
 use App\Services\Cache\CacheWithOptionsResolver;
 use App\Services\SWApi\PlanetsService;
 use App\Services\SWApi\PlanetsServiceInterface;
@@ -35,6 +36,8 @@ class GetTest extends TestCase
 
         /** @var PlanetsServiceInterface $repository */
         $repository = app(PlanetsServiceInterface::class);
+
+        /** @var Planet $planet */
         $planet = $repository->getById($planetId);
 
         $expectedName = 'Tatooine';
