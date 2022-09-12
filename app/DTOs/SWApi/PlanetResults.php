@@ -7,7 +7,7 @@ namespace App\DTOs\SWApi;
 use Illuminate\Support\Arr;
 
 /**
- * @extends Results<int|string, Planet>
+ * @extends Results<Planet>
  */
 class PlanetResults extends Results
 {

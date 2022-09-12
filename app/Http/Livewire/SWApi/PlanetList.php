@@ -24,7 +24,6 @@ class PlanetList extends Component
         'page' => ['except' => 1],
     ];
 
-    /** @var PlanetsServiceInterface<int|string> */
     private PlanetsServiceInterface $service;
 
     public function render(): View
@@ -36,9 +35,6 @@ class PlanetList extends Component
         return view('livewire.SWApi.planet-list', ['planets' => Paginator::fromResponse($response)]);
     }
 
-    /**
-     * @param PlanetsServiceInterface<int|string> $service
-     */
     public function boot(PlanetsServiceInterface $service): void
     {
         $this->service = $service;

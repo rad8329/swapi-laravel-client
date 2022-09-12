@@ -7,10 +7,9 @@ namespace App\DTOs\SWApi;
 use Illuminate\Support\Collection;
 
 /**
- * @template TKey of array-key
  * @template TResource
  *
- * @extends Collection<TKey, TResource>
+ * @extends Collection<int|string, TResource>
  */
 class Results extends Collection
 {

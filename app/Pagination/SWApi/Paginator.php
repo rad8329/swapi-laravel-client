@@ -8,7 +8,6 @@ use App\DTOs\SWApi\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
- * @template TKey of array-key
  * @template TResource
  */
 class Paginator extends \Illuminate\Pagination\Paginator
@@ -16,7 +15,7 @@ class Paginator extends \Illuminate\Pagination\Paginator
     private const PER_PAGE = 10;
 
     /**
-     * @param Response<TKey, TResource> $response
+     * @param Response<TResource> $response
      */
     public static function fromResponse(Response $response): LengthAwarePaginator
     {
