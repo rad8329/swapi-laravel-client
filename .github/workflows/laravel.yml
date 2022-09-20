@@ -7,6 +7,17 @@ on:
     branches: [ "master" ]
 
 jobs:
+  phpstan:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: PHPStan Static Analysis
+      uses: php-actions/phpstan@v2
+      with:
+        configuration: phpstan.neon
+        memory_limit: 256M
+        
   laravel-tests:
 
     runs-on: ubuntu-latest
