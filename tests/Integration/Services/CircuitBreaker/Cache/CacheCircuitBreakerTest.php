@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Integration\Services\CircuitBreaker\Cache;
 
 use App\Services\CircuitBreaker\Cache\CacheCircuitBreaker;
@@ -209,7 +211,7 @@ class CacheCircuitBreakerTest extends TestCase
             }
         }
 
-        sleep($timeToLive + 1); // simulate an retry after some seconds
+        sleep($timeToLive + 1); // simulate a retry after some seconds
 
         $result = $circuitBreaker->try(
             circuitId: 'planets',
