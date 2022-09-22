@@ -18,8 +18,7 @@ interface CircuitBreakerInterface
      * @param Closure():mixed         $whenCircuitIsOpen
      * @param Closure():mixed         $whenCircuitIsClosed
      * @param Closure(Throwable):bool $circuitStatusResolver
-     * @param positive-int            $threshold             the maximum number of failures allowed before it is closed
-     * @param positive-int            $timeToLiveInSeconds
+     * @param int                     $threshold             the maximum number of failures allowed before it is closed
      *
      * @throws Throwable when the circuit is not still closed, it will rethrow the encountered exception
      */

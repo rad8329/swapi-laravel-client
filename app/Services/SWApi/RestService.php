@@ -44,8 +44,7 @@ class RestService extends \App\Services\RestService
      * @param Closure():mixed         $whenCircuitIsOpen
      * @param Closure():mixed         $whenCircuitIsClosed
      * @param Closure(Throwable):bool $circuitStatusResolver
-     * @param positive-int|null       $threshold             the maximum number of failures allowed before it is closed
-     * @param positive-int|null       $timeToLiveInSeconds
+     * @param int|null                $threshold             the maximum number of failures allowed before it is closed
      *
      * @throws Throwable when the circuit is not still closed, it will rethrow the encountered exception
      */
@@ -62,8 +61,8 @@ class RestService extends \App\Services\RestService
             whenCircuitIsOpen: $whenCircuitIsOpen,
             whenCircuitIsClosed: $whenCircuitIsClosed,
             circuitStatusResolver: $circuitStatusResolver,
-            threshold: $threshold ?? config('swapi.circuit_beaker.threshold'),
-            timeToLiveInSeconds: $timeToLiveInSeconds ?? config('swapi.circuit_beaker.time_to_live_in_seconds')
+            threshold: $threshold ?? (int) config('swapi.circuit_beaker.threshold'),
+            timeToLiveInSeconds: $timeToLiveInSeconds ?? (int) config('swapi.circuit_beaker.time_to_live_in_seconds')
         );
     }
 }
